@@ -1,13 +1,13 @@
 {
   "files": {
     "main.js": "https://karthikr963.github.io/adminUI-challenge/static/js/main.65e930f8.chunk.js",
-    "main.js.map": "/adminUI-challenge/static/js/main.65e930f8.chunk.js.map",
-    "runtime-main.js": "/adminUI-challenge/static/js/runtime-main.0490d9c2.js",
-    "runtime-main.js.map": "/adminUI-challenge/static/js/runtime-main.0490d9c2.js.map",
-    "static/js/2.694d6d9d.chunk.js": "/adminUI-challenge/static/js/2.694d6d9d.chunk.js",
-    "static/js/2.694d6d9d.chunk.js.map": "/adminUI-challenge/static/js/2.694d6d9d.chunk.js.map",
-    "index.html": "/adminUI-challenge/index.html",
-    "static/js/2.694d6d9d.chunk.js.LICENSE.txt": "/adminUI-challenge/static/js/2.694d6d9d.chunk.js.LICENSE.txt"
+    "main.js.map": "https://karthikr963.github.io/adminUI-challenge/static/js/main.65e930f8.chunk.js.map",
+    "runtime-main.js": "https://karthikr963.github.io/adminUI-challenge/static/js/runtime-main.0490d9c2.js",
+    "runtime-main.js.map": "https://karthikr963.github.io/adminUI-challenge/static/js/runtime-main.0490d9c2.js.map",
+    "static/js/2.694d6d9d.chunk.js": "https://karthikr963.github.io/adminUI-challenge/static/js/2.694d6d9d.chunk.js",
+    "static/js/2.694d6d9d.chunk.js.map": "https://karthikr963.github.io/adminUI-challenge/static/js/2.694d6d9d.chunk.js.map",
+    "index.html": "https://karthikr963.github.io/adminUI-challenge/index.html",
+    "static/js/2.694d6d9d.chunk.js.LICENSE.txt": "https://karthikr963.github.io/adminUI-challenge/static/js/2.694d6d9d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0490d9c2.js",
