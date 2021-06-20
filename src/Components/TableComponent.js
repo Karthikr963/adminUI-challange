@@ -6,7 +6,7 @@ import User from "./User";
 import Header from "./Header";
 import PaginationComponent from "./PaginationComponent";
 import { reducer } from "../Reducer/reducerFunction";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 const BASE_URL =
   "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
 
