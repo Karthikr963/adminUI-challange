@@ -64,7 +64,7 @@ function TableComponent() {
 
   return (
     <div>
-      <h1 className="text-center">ADMIN TABLE</h1>
+      <h1 className="text-center">ADMIN TABLES</h1>
       <Container variant="secondary">
         {AllUsers.length > 0 ? (
           <Row className="row justify-content-md-center">
