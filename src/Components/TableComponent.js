@@ -148,7 +148,7 @@ function TableComponent() {
             ) : null}
           </Table>
           {users.length === 0 ? (
-            <h1 className="text-center">NO USERS TO DISPLAYs</h1>
+            <h1 className="text-center">NO USERS TO DISPLAY</h1>
           ) : total === 0 ? (
             <h1 className="text-center">NO RESULTS FOR '{search}'</h1>
           ) : null}
