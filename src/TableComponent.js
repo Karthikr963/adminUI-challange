@@ -1,39 +1,25 @@
 import React from "react";
 import axios from "axios";
-import {
-  Container,
-  Button,
-  Row,
-  Col,
-  Table,
-  InputGroup,
-} from "react-bootstrap";
+import { Container, Button, Row, Col, Table } from "react-bootstrap";
 import { useMemo, useState, useEffect, useReducer } from "react";
 import User from "./User";
 import Header from "./Header";
 import PaginationComponent from "./PaginationComponent";
 import { reducer } from "../Reducer/reducerFunction";
 import "bootstrap/dist/css/bootstrap.min.css";
-export let userUpdateContext = React.createContext();
 const BASE_URL =
   "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
 
 function TableComponent() {
   useEffect(() => {
-    axios
-      .get(BASE_URL)
-      .then((res) => {
-        dispatch({
-          type: "get_data",
-          payload: { users: res.data },
-        });
-      })
-      .catch((err) => {
-        setLoadError(true);
+    axios.get(BASE_URL).then((res) => {
+      dispatch({
+        type: "get_data",
+        payload: { users: res.data },
       });
+    });
   }, []);
   const [users, dispatch] = useReducer(reducer, []);
-  const [loadError, setLoadError] = useState(false);
   const [total, setTotalUsers] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -72,33 +58,28 @@ function TableComponent() {
       setAllId(items);
     }
   };
-  const updateUser = (updatedUser) => {
+  function updateUser(updatedUser) {
     dispatch({ type: "update_user", filterArray: updatedUser });
-  };
+  }
 
   return (
     <div>
-      <h1 className="text-center car">ADMIN TABLE</h1>
-      {loadError ? <h1>CANNOT LOAD USERS</h1> : null}
-      <Container size="lg">
+      <h1 className="text-center">ADMIN TABLES</h1>
+      <Container variant="secondary">
         {users.length > 0 ? (
-          <Row className="row">
-            <Col className="form-group col-lg-4">
-              <InputGroup className="mb-1" size="lg">
-                <input
-                  type="text"
-                  className="form-control"
-                  style={{ width: "100%" }}
-                  placeholder="Search By Name,Email,Role"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </InputGroup>
+          <Row className="row justify-content-md-center">
+            <Col xs={12} md={5}>
+              <input
+                type="text"
+                className="form-control"
+                style={{ width: "240px" }}
+                placeholder="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </Col>
-            <Col className="col-lg-6">
+            <Col xs={6} md={4}>
               <Button
-                size="lg"
-                className="car"
                 onClick={() => {
                   setSearch("");
                 }}
@@ -108,57 +89,49 @@ function TableComponent() {
             </Col>
           </Row>
         ) : null}
-        <Row className="row h-70">
-          <Table responsive hover size="lg">
+        <Row className="row justify-content-md-center">
+          <Table responsive hover>
             <Header
               setCheck={checkAll}
               checkAll={(cond) => {
                 setCheckAll(cond);
               }}
             />
-
-            {users.length === 0 ? null : userPerPage.length > 0 ? (
+            {userPerPage.length > 0 ? (
               <tbody>
                 {
                   <>
                     {userPerPage.map((user) => {
                       return (
-                        <userUpdateContext.Provider
+                        <User
                           key={user.id}
-                          value={{ updateuser: updateUser }}
-                        >
-                          <User
-                            key={user.id}
-                            user={user}
-                            setDeleteUser={(id) => {
-                              dispatch({ type: "delete_one", id: id });
-                              setSearch("");
-                            }}
-                            delMultiple={(e, id) => {
-                              toggleCheckbox(e, id);
-                            }}
-                            isCheckedAll={checkAll}
-                          />
-                        </userUpdateContext.Provider>
+                          user={user}
+                          setDeleteUser={(id) => {
+                            dispatch({ type: "delete_one", id: id });
+                            setSearch("");
+                          }}
+                          delMultiple={(e, id) => {
+                            toggleCheckbox(e, id);
+                          }}
+                          isCheckedAll={checkAll}
+                          updateUser={updateUser}
+                        />
                       );
                     })}
                   </>
                 }
               </tbody>
+            ) : users.length === 0 ? (
+              <h1>NO USERS</h1>
+            ) : total === 0 ? (
+              <h1>NO RESULTS FOR '{search}'</h1>
             ) : null}
           </Table>
-          {users.length === 0 ? (
-            <h1 className="text-center">NO USERS TO DISPLAYs</h1>
-          ) : total === 0 ? (
-            <h1 className="text-center">NO RESULTS FOR '{search}'</h1>
-          ) : null}
         </Row>
-        {/* <Row className="row justify-content-md-center"> */}
-        <Row>
-          <Col lg={6}>
+        <Row className="row justify-content-md-center">
+          <Col sm={12} md={5}>
             {users.length > 0 && total > 0 ? (
               <Button
-                size="lg"
                 variant="danger"
                 onClick={() => {
                   checkAll
@@ -172,11 +145,10 @@ function TableComponent() {
               </Button>
             ) : null}
           </Col>
-          <Col lg={6}>
+          <Col>
             {users.length > 0 && total > 0 ? (
               <PaginationComponent
                 total={total}
-                // style={{ width: "10px" }}
                 itemsPerPage={ITEMS_PER_PAGE}
                 currentPage={currentPage}
                 onPageChange={(page) => setCurrentPage(page)}

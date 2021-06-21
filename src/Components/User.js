@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import ModalElement from "./ModalElement";
-function User({ user, setDeleteUser, delMultiple, isCheckedAll, updateUser }) {
+function User({ user, setDeleteUser, delMultiple, isCheckedAll }) {
   const [isChecked, setIsChecked] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   return (
@@ -43,7 +43,6 @@ function User({ user, setDeleteUser, delMultiple, isCheckedAll, updateUser }) {
       <ModalElement
         show={modalShow}
         details={user}
-        updateUser={updateUser}
         onHide={() => setModalShow(false)}
       />
     </>

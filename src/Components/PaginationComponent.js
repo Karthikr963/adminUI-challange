@@ -1,16 +1,12 @@
-// import { Pagination } from "react-bootstrap";
 import React from "react";
-// import Pagination from "react-bootstrap/Pagination";
 import { Pagination } from "react-bootstrap";
 import { useEffect, useState, useMemo } from "react";
-// import Pagination from "react-bootstrap/Pagination";
-// import "bootstrap/dist/css/bootstrap.min.css";
-const PaginationComponent = ({
+function PaginationComponent({
   total = 0,
   itemsPerPage = 5,
   currentPage = 1,
   onPageChange,
-}) => {
+}) {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
@@ -41,7 +37,7 @@ const PaginationComponent = ({
   }
 
   return (
-    <Pagination>
+    <Pagination size="lg">
       <Pagination.Prev
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -53,6 +49,6 @@ const PaginationComponent = ({
       />
     </Pagination>
   );
-};
+}
 
 export default PaginationComponent;

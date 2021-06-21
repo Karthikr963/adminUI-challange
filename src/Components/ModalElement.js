@@ -1,24 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Form } from "react-bootstrap";
+import { userUpdateContext } from "./TableComponent";
 export default function ModalElement(props) {
-  //   return <div></div>;
-  function update(e) {
-    e.preventDefault();
-    props.updateUser({
-      id: props.details.id,
-      name: name,
-      email: email,
-      role: role,
-    });
-    props.onHide();
-  }
+  const contextData = useContext(userUpdateContext);
   const [name, setName] = useState(props.details.name);
   const [email, setEmail] = useState(props.details.email);
   const [role, setRole] = useState(props.details.role);
 
   return (
     <Modal
+      animation={false}
       {...props}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
@@ -30,11 +22,9 @@ export default function ModalElement(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <h4>Centered Modal</h4> */}
         <Form>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>User Name</Form.Label>
-            {/* placeholder={props.user.name} */}
             <Form.Control
               type="text"
               value={name}
@@ -44,7 +34,7 @@ export default function ModalElement(props) {
             />
           </Form.Group>
 
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group>
             <Form.Label>User Email</Form.Label>
             <Form.Control
               type="text"
@@ -54,7 +44,7 @@ export default function ModalElement(props) {
               }}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group>
             <Form.Label>User Role</Form.Label>
             <Form.Control
               type="text"
@@ -68,7 +58,14 @@ export default function ModalElement(props) {
             variant="primary"
             type="submit"
             onClick={(e) => {
-              update(e);
+              e.preventDefault();
+              contextData.updateuser({
+                id: props.details.id,
+                name: name,
+                email: email,
+                role: role,
+              });
+              props.onHide();
             }}
           >
             Update
