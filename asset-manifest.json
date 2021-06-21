@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/adminUI-challenge/static/js/main.6bf1f55d.chunk.js",
-    "main.js.map": "/adminUI-challenge/static/js/main.6bf1f55d.chunk.js.map",
+    "main.js": "/adminUI-challenge/static/js/main.5195e7c2.chunk.js",
+    "main.js.map": "/adminUI-challenge/static/js/main.5195e7c2.chunk.js.map",
     "runtime-main.js": "/adminUI-challenge/static/js/runtime-main.0490d9c2.js",
     "runtime-main.js.map": "/adminUI-challenge/static/js/runtime-main.0490d9c2.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/adminUI-challenge/static/css/2.4c97ca4f.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.0490d9c2.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.67abc3b8.chunk.js",
-    "static/js/main.6bf1f55d.chunk.js"
+    "static/js/main.5195e7c2.chunk.js"
   ]
 }
